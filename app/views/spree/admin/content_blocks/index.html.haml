@@ -1,0 +1,22 @@
+=content_for :page_title do 
+	=Spree.t(:content_blocks)
+
+-unless @collection.any? 
+	.alert.alert-warning
+		= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::ContentBlock))
+-else 
+	%table.table
+		%thead
+			%tr
+				%th
+					Key
+				%th
+					Body
+				%th.actions
+		%tbody
+			-(@collection).each do |block| 
+				%tr(id="#{spree_dom_id block}")
+					%td= block.key
+					%td= block.truncate_content
+					%td.actions.actions-2.text-right
+						= link_to_with_icon('edit', Spree.t(:edit), spree.edit_admin_content_block_url(block), class: 'btn btn-primary btn-sm', no_text: true, data: { action: 'edit' })

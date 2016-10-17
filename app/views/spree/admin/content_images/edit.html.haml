@@ -1,0 +1,11 @@
+=content_for :page_title do 
+	=Spree.t(:edit_content_block_image)
+
+=form_for @content_image, url: admin_content_block_image_url(@content_block, @content_image) do |f|
+	=f.label :attachment
+	=f.file_field :attachment
+	=f.label :alt_text
+	=f.text_field :alt
+	=f.label :link
+	=f.text_field :link
+	=f.submit

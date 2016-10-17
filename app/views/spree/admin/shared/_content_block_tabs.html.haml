@@ -1,0 +1,12 @@
+-content_for :page_title do 
+	=link_to Spree.t(:content_blocks), admin_content_blocks_path
+	\/
+	=@content_block.key
+
+-content_for :sidebar do 
+	%ul.nav.nav-pills.nav-stacked
+		= content_tag :li, class: ('active' if current == :details) do
+			=link_to_with_icon 'edit', Spree.t(:details), edit_admin_content_block_url(@content_block)
+		-if @content_block.has_images?
+			= content_tag :li, class: ('active' if current == :images) do
+				= link_to_with_icon 'picture', Spree.t(:images), spree.admin_content_block_images_url(@content_block)

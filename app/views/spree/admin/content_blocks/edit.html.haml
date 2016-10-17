@@ -1,0 +1,6 @@
+=render partial: 'spree/admin/shared/content_block_tabs', locals: {current: :details}
+
+=form_for [:admin, @content_block] do |f|
+	=f.text_area :content, class: 'ckeditor'
+	/ =f.text
+	=f.submit
